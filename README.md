@@ -43,7 +43,7 @@ A smart web application that helps you plan budget-friendly trips with AI-powere
 
 ## 👤 Author
 
-**Yaman** - [Yaman123a](https://github.com/Yaman123a)
+**Prem** - [Prem-Hanchate](https://github.com/Prem-Hanchate)
 
 ## 📝 License
 
