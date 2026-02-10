@@ -62,6 +62,19 @@ async function generatePlan() {
 
     if(!dest || !budget || !days) return alert("All fields including Days are compulsory!");
 
+    // Check if API key is configured
+    if(!GROQ_API_KEY || GROQ_API_KEY === "YOUR_API_KEY_HERE") {
+        alert("⚠️ API Key Not Configured!\n\n" +
+              "Please follow these steps:\n\n" +
+              "1. Visit: https://console.groq.com/keys\n" +
+              "2. Sign up for a FREE account\n" +
+              "3. Generate a new API key\n" +
+              "4. Open app.js file\n" +
+              "5. Replace 'YOUR_API_KEY_HERE' with your actual key\n" +
+              "6. Save the file and refresh the page");
+        return;
+    }
+
     btn.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> CALCULATING ITINERARY...';
     btn.disabled = true;
 
@@ -96,7 +109,9 @@ async function generatePlan() {
 
         const data = await response.json();
         
-        if (data.error) throw new Error(data.error.message);
+        if (data.error) {
+            throw new Error(data.error.message || "Invalid API key. Please check your Groq API key in app.js");
+        }
 
         resultsDiv.classList.remove('hidden');
         output.innerHTML = data.choices[0].message.content;
@@ -119,7 +134,7 @@ async function generatePlan() {
         getWeatherForDestination(dest);
 
     } catch (error) {
-        alert("Error: " + error.message);
+        alert("❌ Error: " + error.message + "\n\nIf you're seeing an authentication error, please verify your Groq API key in app.js is correct.");
     } finally {
         btn.innerHTML = '<i class="fas fa-sparkles mr-2"></i> OPTIMIZE MY TRAVEL PLAN';
         btn.disabled = false;
