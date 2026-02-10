@@ -2,6 +2,22 @@
 
 A smart web application that helps you plan budget-friendly trips with AI-powered recommendations and comprehensive travel tools.
 
+## ⚠️ IMPORTANT: Setup Required
+
+**Before using this app, you MUST configure your Groq API key:**
+
+1. Visit [https://console.groq.com/keys](https://console.groq.com/keys)
+2. Sign up for a **FREE** account (no credit card required)
+3. Generate a new API key
+4. Open `app.js` file (line 3)
+5. Replace `YOUR_API_KEY_HERE` with your actual API key:
+   ```javascript
+   const GROQ_API_KEY = "your-actual-api-key-here";
+   ```
+6. Save the file and refresh your browser
+
+**Without a valid API key, the travel plan generator will not work!**
+
 ## ✨ Features
 
 - **AI Travel Planning** - Generate personalized travel plans using AI
